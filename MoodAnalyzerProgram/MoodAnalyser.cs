@@ -16,15 +16,19 @@ namespace MoodAnalyzerProgram
 
         public string Analyse()
         {
+            if (message == string.Empty)
+            {
+                throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.EMPTY_MOOD, "Message is Empty");
+            }
             try
             {
                 if (message.Contains("Sad"))
                     return "SAD";
                 else
                     return "HAPPY";
-            }catch(NullReferenceException ex)
+            }catch(MoodAnalysisException)
             {
-                return "HAPPY";
+                throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NULL_MOOD, "Message is Null");
             }
         }
     }
