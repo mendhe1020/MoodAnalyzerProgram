@@ -5,7 +5,7 @@
         static void Main(string[] args)
         {
             MoodAnalyser mood = new MoodAnalyser(null);
-            string message = mood.Analyse();
+            string message = mood.Analyser();
         }
     }
 }

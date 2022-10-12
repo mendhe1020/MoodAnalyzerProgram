@@ -9,24 +9,32 @@ namespace MoodAnalyzerProgram
     public class MoodAnalyser
     {
         string message;
-        public MoodAnalyser(string msg)
+        public MoodAnalyser()
         {
-            this.message = msg;
-        }
 
-        public string Analyse()
+        }
+        public MoodAnalyser(string message)
         {
-            if (message == string.Empty)
+            this.message = message;
+        }
+        public string Analyser()
+        {
+            if (string.IsNullOrEmpty(message))
             {
                 throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.EMPTY_MOOD, "Message is Empty");
             }
             try
             {
                 if (message.Contains("Sad"))
+                {
                     return "SAD";
+                }
                 else
+                {
                     return "HAPPY";
-            }catch(MoodAnalysisException)
+                }
+            }
+            catch (MoodAnalysisException)
             {
                 throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NULL_MOOD, "Message is Null");
             }
